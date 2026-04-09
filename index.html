@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Fuego - Restaurante Mexicano</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #111;
+      color: #fff;
+    }
+
+    header {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+                  url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      color: #ff3c00;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(0,0,0,0.7);
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h2 {
+      color: #ff3c00;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    nav ul li:hover {
+      color: #ff3c00;
+    }
+
+    section {
+      padding: 80px 50px;
+    }
+
+    .about {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 50%;
+      border-radius: 10px;
+    }
+
+    .menu {
+      text-align: center;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: #222;
+    }
+
+    .card h3 {
+      color: #ff3c00;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    footer {
+      background: #000;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      background: #ff3c00;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff5e2b;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h2>El Fuego</h2>
+  <ul>
+    <li>Início</li>
+    <li>Sobre</li>
+    <li>Menu</li>
+    <li>Contato</li>
+  </ul>
+</nav>
+
+<header>
+  <h1>El Fuego</h1>
+  <p>Autêntica experiência mexicana</p>
+  <button>Ver Menu</button>
+</header>
+
+<section class="about">
+  <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b">
+  <div>
+    <h2>Sobre Nós</h2>
+    <p>
+      No El Fuego, trazemos o verdadeiro sabor do México com ingredientes frescos,
+      receitas tradicionais e um ambiente sofisticado. Cada prato é uma explosão de sabor.
+    </p>
+  </div>
+</section>
+
+<section class="menu">
+  <h2>Nosso Menu</h2>
+  <div class="menu-items">
+    <div class="card">
+      <h3>Tacos</h3>
+      <p>Deliciosos tacos com carne, frango ou vegetariano.</p>
+    </div>
+    <div class="card">
+      <h3>Burritos</h3>
+      <p>Recheios generosos e sabor autêntico.</p>
+    </div>
+    <div class="card">
+      <h3>Nachos</h3>
+      <p>Com queijo derretido e guacamole.</p>
+    </div>
+    <div class="card">
+      <h3>Guacamole</h3>
+      <p>Preparado na hora com ingredientes frescos.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Contato</h2>
+  <p>📍 Curitiba - PR</p>
+  <p>📞 (41) 99999-9999</p>
+  <button>Reservar Mesa</button>
+</section>
+
+<footer>
+  <p>© 2026 El Fuego - Todos os direitos reservados</p>
+</footer>
+
+</body>
+</html>
