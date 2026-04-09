@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Rosado | Sistema de Pedidos</title>
+
+<style>
+body {font-family: Arial; margin:0; background:#111; color:#fff;}
+
+h1 {text-align:center; padding:20px; color:#ff4d4d;}
+
+.container {
+  display:grid;
+  grid-template-columns: 1fr 320px;
+}
+
+.menu {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  padding:20px;
+}
+
+.card {
+  background:#1a1a1a;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+}
+
+button {
+  background:#ff4d4d;
+  border:none;
+  padding:8px;
+  color:white;
+  cursor:pointer;
+  margin-top:10px;
+  border-radius:5px;
+}
+
+.cart {
+  background:#000;
+  padding:15px;
+  height:100vh;
+  overflow:auto;
+}
+
+input, select {
+  width:100%;
+  padding:8px;
+  margin-top:8px;
+  border:none;
+  border-radius:5px;
+}
+
+.item {
+  border-bottom:1px solid #333;
+  margin:10px 0;
+  padding-bottom:5px;
+}
+
+.qty {
+  display:flex;
+  justify-content:center;
+  gap:5px;
+}
+
+.total {
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.whatsapp {
+  display:block;
+  background:#25D366;
+  text-align:center;
+  padding:10px;
+  margin-top:10px;
+  color:white;
+  text-decoration:none;
+  border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌮 El Rosado</h1>
+
+<div class="container">
+
+<div class="menu">
+  <div class="card">
+    <h3>Tacos</h3>
+    <p>R$ 18</p>
+    <button onclick="add('Tacos',18)">Adicionar</button>
+  </div>
+
+  <div class="card">
+    <h3>Burrito</h3>
+    <p>R$ 25</p>
+    <button onclick="add('Burrito',25)">Adicionar</button>
+  </div>
+
+  <div class="card">
+    <h3>Nachos</h3>
+    <p>R$ 20</p>
+    <button onclick="add('Nachos',20)">Adicionar</button>
+  </div>
+</div>
+
+<div class="cart">
+  <h2>🛒 Pedido</h2>
+
+  <div id="lista"></div>
+
+  <div class="total" id="total">Total: R$ 0</div>
+
+  <h3>Seus dados</h3>
+  <input id="nome" placeholder="Seu nome">
+  <input id="endereco" placeholder="Endereço">
+
+  <select id="pagamento">
+    <option>Pagamento</option>
+    <option>Pix</option>
+    <option>Dinheiro</option>
+    <option>Cartão</option>
+  </select>
+
+  <a id="whats" class="whatsapp" target="_blank">
+    Finalizar Pedido
+  </a>
+</div>
+
+</div>
+
+<script>
+let carrinho = [];
+
+function add(nome, preco){
+  let item = carrinho.find(i => i.nome === nome);
+  if(item){
+    item.qtd++;
+  } else {
+    carrinho.push({nome, preco, qtd:1});
+  }
+  atualizar();
+}
+
+function mudarQtd(nome, delta){
+  let item = carrinho.find(i => i.nome === nome);
+  item.qtd += delta;
+
+  if(item.qtd <= 0){
+    carrinho = carrinho.filter(i => i.nome !== nome);
+  }
+
+  atualizar();
+}
+
+function atualizar(){
+  let lista = document.getElementById("lista");
+  let total = 0;
+  lista.innerHTML = "";
+
+  carrinho.forEach(item=>{
+    total += item.preco * item.qtd;
+
+    lista.innerHTML += `
+      <div class="item">
+        <p>${item.nome} - R$ ${item.preco}</p>
+        <div class="qty">
+          <button onclick="mudarQtd('${item.nome}', -1)">-</button>
+          <span>${item.qtd}</span>
+          <button onclick="mudarQtd('${item.nome}', 1)">+</button>
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = "Total: R$ " + total;
+
+  let nome = document.getElementById("nome").value;
+  let endereco = document.getElementById("endereco").value;
+  let pagamento = document.getElementById("pagamento").value;
+
+  let msg = "🍔 *Pedido El Rosado* %0A";
+
+  carrinho.forEach(item=>{
+    msg += `${item.nome} x${item.qtd} - R$ ${item.preco * item.qtd} %0A`;
+  });
+
+  msg += `%0A💰 Total: R$ ${total}`;
+  msg += `%0A👤 Nome: ${nome}`;
+  msg += `%0A📍 Endereço: ${endereco}`;
+  msg += `%0A💳 Pagamento: ${pagamento}`;
+
+  document.getElementById("whats").href =
+    "https://wa.me/5545999999999?text=" + msg;
+}
+</script>
+
+</body>
+</html>
