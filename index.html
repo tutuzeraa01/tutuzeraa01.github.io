@@ -3,65 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Rosado | Nossa Equipe</title>
+<title>El Rosado Enterprise</title>
 
 <style>
-body {
+body{
   margin:0;
-  font-family: Arial;
-  background:#111;
+  font-family:Arial;
+  background:#0d0d0d;
   color:white;
 }
 
-header {
-  background:#ff4d4d;
-  padding:20px;
-  text-align:center;
+/* HEADER */
+header{
+  background:#ff2b2b;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-header h1 {
-  margin:0;
+nav button{
+  margin:0 5px;
+  padding:8px 10px;
+  border:none;
+  border-radius:6px;
+  background:#1c1c1c;
+  color:white;
+  cursor:pointer;
 }
 
-.section {
-  padding:50px 20px;
-  max-width:1000px;
-  margin:auto;
-}
+/* PAGES */
+.page{display:none;padding:20px;}
+.active{display:block;}
 
-h2 {
-  text-align:center;
-  color:#ff4d4d;
-  margin-bottom:30px;
-}
-
-.grid {
+/* GRID */
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
 }
 
-.card {
-  background:#1a1a1a;
-  padding:20px;
+/* CARD */
+.card{
+  background:#1c1c1c;
+  padding:15px;
   border-radius:10px;
-  transition:0.3s;
 }
 
-.card:hover {
-  transform:scale(1.05);
+/* BUTTON */
+.btn{
+  background:#ff2b2b;
+  border:none;
+  padding:8px;
+  width:100%;
+  color:white;
+  margin-top:10px;
+  cursor:pointer;
 }
 
-.role {
-  color:#ff4d4d;
-  font-weight:bold;
+/* CART */
+.item{
+  background:#1c1c1c;
+  padding:10px;
+  margin:5px 0;
+  border-radius:8px;
 }
 
-footer {
-  background:#000;
-  text-align:center;
-  padding:20px;
-  margin-top:30px;
+/* STATUS */
+.status{
+  padding:5px;
+  background:#333;
+  display:inline-block;
+  border-radius:5px;
+  margin-top:5px;
+}
+
+/* ADMIN BOX */
+.admin{
+  background:#1c1c1c;
+  padding:10px;
+  margin:10px 0;
+  border-radius:10px;
 }
 </style>
 </head>
@@ -69,63 +91,182 @@ footer {
 <body>
 
 <header>
-  <h1>🌮 El Rosado</h1>
-  <p>Conheça nossa equipe profissional</p>
+  <h3>🌮 El Rosado Enterprise</h3>
+
+  <nav>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('menu')">Menu</button>
+    <button onclick="show('cart')">Carrinho</button>
+    <button onclick="show('login')">Login</button>
+    <button onclick="show('admin')">Admin</button>
+  </nav>
 </header>
 
-<section class="section">
-  <h2>👨‍🍳 Nossa Equipe</h2>
+<!-- HOME -->
+<div id="home" class="page active">
+  <h2>Bem-vindo ao sistema profissional</h2>
+  <p>Delivery estilo iFood completo 🍽️</p>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="page">
+  <h2>Cardápio</h2>
 
   <div class="grid">
 
     <div class="card">
-      <h3>Chef de Cozinha</h3>
-      <p class="role">Responsável pelos pratos</p>
-      <p>Coordena toda a cozinha, cria receitas e garante a qualidade da comida.</p>
+      <h3>Taco</h3>
+      <p>R$ 18</p>
+      <button class="btn" onclick="add('Taco',18)">Adicionar</button>
     </div>
 
     <div class="card">
-      <h3>Cozinheiro</h3>
-      <p class="role">Preparo dos alimentos</p>
-      <p>Prepara os pratos seguindo os padrões definidos pelo chef.</p>
+      <h3>Burrito</h3>
+      <p>R$ 25</p>
+      <button class="btn" onclick="add('Burrito',25)">Adicionar</button>
     </div>
 
     <div class="card">
-      <h3>Auxiliar de Cozinha</h3>
-      <p class="role">Apoio geral</p>
-      <p>Ajuda no preparo, limpeza e organização da cozinha.</p>
-    </div>
-
-    <div class="card">
-      <h3>Garçom</h3>
-      <p class="role">Atendimento ao cliente</p>
-      <p>Recebe pedidos, atende mesas e garante uma boa experiência.</p>
-    </div>
-
-    <div class="card">
-      <h3>Caixa</h3>
-      <p class="role">Pagamentos</p>
-      <p>Responsável por receber pagamentos e fechar contas.</p>
-    </div>
-
-    <div class="card">
-      <h3>Gerente</h3>
-      <p class="role">Administração</p>
-      <p>Coordena a equipe e cuida do funcionamento geral do restaurante.</p>
-    </div>
-
-    <div class="card">
-      <h3>Entregador</h3>
-      <p class="role">Delivery</p>
-      <p>Leva os pedidos até o cliente com rapidez e segurança.</p>
+      <h3>Nachos</h3>
+      <p>R$ 20</p>
+      <button class="btn" onclick="add('Nachos',20)">Adicionar</button>
     </div>
 
   </div>
-</section>
+</div>
 
-<footer>
-  <p>© 2026 El Rosado - Todos os direitos reservados</p>
-</footer>
+<!-- CART -->
+<div id="cart" class="page">
+  <h2>Carrinho</h2>
+
+  <div id="cartItems"></div>
+
+  <h3>Total: R$ <span id="total">0</span></h3>
+
+  <button class="btn" onclick="checkout()">Finalizar Pedido</button>
+</div>
+
+<!-- LOGIN -->
+<div id="login" class="page">
+  <h2>Login Cliente</h2>
+
+  <input id="user" placeholder="Nome" style="padding:10px;width:100%;margin:5px 0;">
+  <button class="btn" onclick="login()">Entrar</button>
+</div>
+
+<!-- ADMIN -->
+<div id="admin" class="page">
+  <h2>Painel do Restaurante</h2>
+  <div id="orders"></div>
+</div>
+
+<script>
+let cart = [];
+let total = 0;
+let user = "";
+
+/* NAV */
+function show(p){
+  document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
+  document.getElementById(p).classList.add('active');
+
+  if(p==="cart") renderCart();
+  if(p==="admin") renderOrders();
+}
+
+/* LOGIN */
+function login(){
+  user = document.getElementById("user").value;
+  alert("Bem-vindo " + user);
+}
+
+/* ADD */
+function add(name,price){
+  cart.push({name,price});
+  total += price;
+  alert(name+" adicionado!");
+}
+
+/* CART */
+function renderCart(){
+  let div = document.getElementById("cartItems");
+  div.innerHTML = "";
+
+  cart.forEach((c,i)=>{
+    div.innerHTML += `
+      <div class="item">
+        ${c.name} - R$ ${c.price}
+        <button onclick="remove(${i})">X</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = total;
+}
+
+function remove(i){
+  total -= cart[i].price;
+  cart.splice(i,1);
+  renderCart();
+}
+
+/* CHECKOUT (SIMULA BANCO REAL) */
+function checkout(){
+  if(cart.length===0){
+    alert("Carrinho vazio");
+    return;
+  }
+
+  let orders = JSON.parse(localStorage.getItem("orders")||"[]");
+
+  let order = {
+    id: Date.now(),
+    user:user || "Anon",
+    items:cart,
+    total:total,
+    status:"🕐 Recebido"
+  };
+
+  orders.push(order);
+  localStorage.setItem("orders",JSON.stringify(orders));
+
+  cart=[];
+  total=0;
+
+  alert("Pedido enviado!");
+}
+
+/* ADMIN */
+function renderOrders(){
+  let orders = JSON.parse(localStorage.getItem("orders")||"[]");
+  let div = document.getElementById("orders");
+
+  div.innerHTML="";
+
+  orders.forEach((o,i)=>{
+    div.innerHTML += `
+      <div class="admin">
+        <b>${o.user}</b><br>
+        ${o.items.map(x=>x.name).join(", ")}<br>
+        Total: R$ ${o.total}<br>
+        <div class="status">${o.status}</div><br><br>
+
+        <button onclick="update(${i},'👨‍🍳 Preparando')">Preparar</button>
+        <button onclick="update(${i},'🚚 Saiu')">Saiu</button>
+        <button onclick="update(${i},'✅ Entregue')">Entregue</button>
+      </div>
+    `;
+  });
+}
+
+/* STATUS UPDATE */
+function update(i,status){
+  let orders = JSON.parse(localStorage.getItem("orders"));
+  orders[i].status = status;
+  localStorage.setItem("orders",JSON.stringify(orders));
+  renderOrders();
+}
+</script>
 
 </body>
 </html>
