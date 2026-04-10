@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,6 +36,11 @@ nav button{
 .page{display:none;padding:20px;}
 .active{display:block;}
 
+h2{
+  text-align:center;
+  color:#ff2b2b;
+}
+
 /* GRID */
 .grid{
   display:grid;
@@ -48,6 +53,11 @@ nav button{
   background:#1c1c1c;
   padding:15px;
   border-radius:10px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.05);
 }
 
 /* BUTTON */
@@ -69,21 +79,19 @@ nav button{
   border-radius:8px;
 }
 
-/* STATUS */
-.status{
-  padding:5px;
-  background:#333;
-  display:inline-block;
-  border-radius:5px;
-  margin-top:5px;
-}
-
-/* ADMIN BOX */
+/* ADMIN */
 .admin{
   background:#1c1c1c;
   padding:10px;
   margin:10px 0;
   border-radius:10px;
+}
+
+.status{
+  background:#333;
+  padding:5px;
+  border-radius:5px;
+  display:inline-block;
 }
 </style>
 </head>
@@ -91,7 +99,7 @@ nav button{
 <body>
 
 <header>
-  <h3>🌮 El Rosado Enterprise</h3>
+  <h2>🌮 El Rosado</h2>
 
   <nav>
     <button onclick="show('home')">Home</button>
@@ -104,8 +112,7 @@ nav button{
 
 <!-- HOME -->
 <div id="home" class="page active">
-  <h2>Bem-vindo ao sistema profissional</h2>
-  <p>Delivery estilo iFood completo 🍽️</p>
+  <h2>Bem-vindo ao sistema profissional 🍽️</h2>
 </div>
 
 <!-- MENU -->
@@ -138,25 +145,21 @@ nav button{
 <!-- CART -->
 <div id="cart" class="page">
   <h2>Carrinho</h2>
-
   <div id="cartItems"></div>
-
   <h3>Total: R$ <span id="total">0</span></h3>
-
   <button class="btn" onclick="checkout()">Finalizar Pedido</button>
 </div>
 
 <!-- LOGIN -->
 <div id="login" class="page">
-  <h2>Login Cliente</h2>
-
-  <input id="user" placeholder="Nome" style="padding:10px;width:100%;margin:5px 0;">
+  <h2>Login</h2>
+  <input id="user" placeholder="Nome" style="padding:10px;width:100%;">
   <button class="btn" onclick="login()">Entrar</button>
 </div>
 
 <!-- ADMIN -->
 <div id="admin" class="page">
-  <h2>Painel do Restaurante</h2>
+  <h2>Painel</h2>
   <div id="orders"></div>
 </div>
 
@@ -210,7 +213,7 @@ function remove(i){
   renderCart();
 }
 
-/* CHECKOUT (SIMULA BANCO REAL) */
+/* CHECKOUT */
 function checkout(){
   if(cart.length===0){
     alert("Carrinho vazio");
@@ -259,7 +262,6 @@ function renderOrders(){
   });
 }
 
-/* STATUS UPDATE */
 function update(i,status){
   let orders = JSON.parse(localStorage.getItem("orders"));
   orders[i].status = status;
