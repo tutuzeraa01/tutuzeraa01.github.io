@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>El Rosado Enterprise</title>
+<title>El Rosado</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
@@ -16,22 +16,23 @@ body{
   color:white;
 }
 
+/* HEADER */
 header{
-  background:rgba(0,0,0,0.7);
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   position:fixed;
   width:100%;
+  background:#000;
+  padding:10px;
+  display:flex;
+  justify-content:space-between;
+  z-index:10;
 }
 
 nav button{
-  margin:0 5px;
+  margin:5px;
   padding:8px;
   border:none;
   border-radius:20px;
-  background:#1c1c1c;
+  background:#222;
   color:white;
   cursor:pointer;
 }
@@ -40,18 +41,31 @@ nav button:hover{
   background:#ff2b2b;
 }
 
-.page{
-  display:none;
-  padding:100px 20px;
-}
-
-.active{display:block;}
-
+/* HERO COM IMAGEM */
 .hero{
+  height:100vh;
+  background:url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d') center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
 }
 
-.hero h1{color:#ff2b2b;}
+.hero h1{
+  font-size:50px;
+  background:rgba(0,0,0,0.6);
+  padding:10px;
+}
+
+.hero p{
+  max-width:600px;
+  background:rgba(0,0,0,0.6);
+  padding:15px;
+}
+
+.page{display:none;padding:100px 20px;}
+.active{display:block;}
 
 .grid{
   display:grid;
@@ -61,8 +75,8 @@ nav button:hover{
 
 .card{
   background:#1c1c1c;
-  padding:15px;
-  border-radius:15px;
+  padding:10px;
+  border-radius:10px;
 }
 
 .card img{
@@ -83,9 +97,11 @@ nav button:hover{
   border-radius:10px;
 }
 
-.small{
-  font-size:13px;
-  color:#bbb;
+.item{
+  background:#1c1c1c;
+  padding:10px;
+  margin:5px;
+  border-radius:8px;
 }
 </style>
 </head>
@@ -106,10 +122,15 @@ nav button:hover{
 <div id="home" class="page active hero">
   <h1>El Rosado</h1>
   <p>
-    Um restaurante que nasceu nas ruas do México e cresceu com paixão.
-    Cada prato conta uma história, cada sabor traz tradição.
+    Dizem que tudo começou com um porco assado lentamente em uma pequena vila mexicana,
+    preparado por um cozinheiro apaixonado que acreditava que comida era mais do que sabor — era emoção.
+
+    O aroma se espalhou pelas ruas, atraindo pessoas de todos os cantos.
+    Assim nasceu o El Rosado: um lugar onde tradição, fogo e paixão se encontram.
+
+    Hoje trazemos essa mesma essência até você.
   </p>
-  <button class="btn" onclick="show('menu')">Ver Cardápio</button>
+  <button class="btn" onclick="show('menu')">🔥 Ver Cardápio</button>
 </div>
 
 <!-- MENU -->
@@ -120,65 +141,29 @@ nav button:hover{
     <div class="card">
       <img src="https://images.unsplash.com/photo-1617196038435-3c1a5c3e1f2f">
       <h3>Taco</h3>
-      <p class="small">Carne, alface, queijo, molho</p>
-      <p>R$ 18</p>
-      <button class="btn" onclick="add('Taco',18)">Adicionar</button>
+      <p>Carne, alface, queijo e molho especial</p>
+      <button class="btn" onclick="add('Taco',18)">R$18</button>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
       <h3>Burrito</h3>
-      <p class="small">Arroz, carne, feijão, queijo</p>
-      <p>R$ 25</p>
-      <button class="btn" onclick="add('Burrito',25)">Adicionar</button>
+      <p>Arroz, feijão, carne e queijo derretido</p>
+      <button class="btn" onclick="add('Burrito',25)">R$25</button>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1544025162-d76694265947">
       <h3>Nachos</h3>
-      <p class="small">Tortilla, cheddar, carne</p>
-      <p>R$ 20</p>
-      <button class="btn" onclick="add('Nachos',20)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1585238342028-4d2a79b5b1b3">
-      <h3>Quesadilla</h3>
-      <p class="small">Queijo, frango, tortilla</p>
-      <p>R$ 22</p>
-      <button class="btn" onclick="add('Quesadilla',22)">Adicionar</button>
+      <p>Tortilla crocante com cheddar e carne</p>
+      <button class="btn" onclick="add('Nachos',20)">R$20</button>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85">
       <h3>Guacamole</h3>
-      <p class="small">Abacate, tomate, limão</p>
-      <p>R$ 15</p>
-      <button class="btn" onclick="add('Guacamole',15)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1601924638867-3ec2d5c0c0c6">
-      <h3>Fajitas</h3>
-      <p class="small">Carne, pimentão, cebola</p>
-      <p>R$ 30</p>
-      <button class="btn" onclick="add('Fajitas',30)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1625944238854-0c7c6e0f9c52">
-      <h3>Churros</h3>
-      <p class="small">Massa doce, açúcar, canela</p>
-      <p>R$ 12</p>
-      <button class="btn" onclick="add('Churros',12)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1581006852262-e4307cf6283a">
-      <h3>Refrigerante</h3>
-      <p class="small">Bebida gelada</p>
-      <p>R$ 8</p>
-      <button class="btn" onclick="add('Refri',8)">Adicionar</button>
+      <p>Abacate fresco com limão e temperos</p>
+      <button class="btn" onclick="add('Guacamole',15)">R$15</button>
     </div>
 
   </div>
@@ -189,15 +174,33 @@ nav button:hover{
   <h2>Carrinho</h2>
   <div id="cartItems"></div>
   <h3>Total: R$ <span id="total">0</span></h3>
+  <button class="btn" onclick="checkout()">Confirmar Pedido</button>
 </div>
 
 <!-- STAFF -->
 <div id="staff" class="page">
   <h2>Equipe</h2>
 
-  <p>👨‍🍳 Chef — cria os pratos</p>
-  <p>🧑‍🍳 Cozinheiro — prepara pedidos</p>
-  <p>🚚 Entregador — leva pedidos</p>
+  <div class="item">
+    👨‍🍳 <b>Chef</b><br>
+    Responsável por criar receitas únicas e garantir qualidade máxima.
+  </div>
+
+  <div class="item">
+    🧑‍🍳 <b>Cozinheiro</b><br>
+    Prepara cada prato com precisão e rapidez.
+  </div>
+
+  <div class="item">
+    🧾 <b>Atendente</b><br>
+    Cuida do cliente e organiza pedidos.
+  </div>
+
+  <div class="item">
+    🚚 <b>Entregador</b><br>
+    Leva sua comida até você com agilidade.
+  </div>
+
 </div>
 
 <script>
@@ -212,19 +215,35 @@ function show(p){
 
 function add(name,price){
   cart.push({name,price});
-  total += price;
+  total+=price;
   alert(name+" adicionado!");
 }
 
 function renderCart(){
-  let div = document.getElementById("cartItems");
-  div.innerHTML = "";
+  let div=document.getElementById("cartItems");
+  div.innerHTML="";
 
   cart.forEach((c,i)=>{
-    div.innerHTML += `${c.name} - R$ ${c.price}<br>`;
+    div.innerHTML+=`
+      <div class="item">
+        ${c.name} - R$ ${c.price}
+      </div>
+    `;
   });
 
-  document.getElementById("total").innerText = total;
+  document.getElementById("total").innerText=total;
+}
+
+function checkout(){
+  if(cart.length===0){
+    alert("Carrinho vazio!");
+    return;
+  }
+
+  alert("✅ Pedido confirmado! Obrigado!");
+  cart=[];
+  total=0;
+  show("home");
 }
 </script>
 
