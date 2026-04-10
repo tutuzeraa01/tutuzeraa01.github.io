@@ -16,22 +16,19 @@ body{
   color:white;
 }
 
-/* HEADER */
 header{
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.7);
   padding:15px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   position:fixed;
   width:100%;
-  z-index:100;
 }
 
 nav button{
   margin:0 5px;
-  padding:8px 12px;
+  padding:8px;
   border:none;
   border-radius:20px;
   background:#1c1c1c;
@@ -43,52 +40,29 @@ nav button:hover{
   background:#ff2b2b;
 }
 
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.hero h1{
-  font-size:50px;
-  color:#ff2b2b;
-}
-
-.hero p{
-  max-width:600px;
-  color:#ccc;
-}
-
-/* PAGES */
 .page{
   display:none;
-  padding:100px 20px 20px;
+  padding:100px 20px;
 }
 
 .active{display:block;}
 
-h2{
+.hero{
   text-align:center;
-  color:#ff2b2b;
 }
 
-/* GRID */
+.hero h1{color:#ff2b2b;}
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:15px;
 }
 
-/* CARD */
 .card{
   background:#1c1c1c;
   padding:15px;
   border-radius:15px;
-  text-align:center;
 }
 
 .card img{
@@ -96,14 +70,8 @@ h2{
   height:140px;
   object-fit:cover;
   border-radius:10px;
-  margin-bottom:10px;
 }
 
-.card:hover{
-  transform:scale(1.05);
-}
-
-/* BUTTON */
 .btn{
   background:#ff2b2b;
   border:none;
@@ -115,27 +83,9 @@ h2{
   border-radius:10px;
 }
 
-/* CART */
-.item{
-  background:#1c1c1c;
-  padding:10px;
-  margin:5px 0;
-  border-radius:8px;
-}
-
-/* ADMIN / STAFF */
-.admin{
-  background:#1c1c1c;
-  padding:10px;
-  margin:10px 0;
-  border-radius:10px;
-}
-
-.status{
-  background:#333;
-  padding:5px;
-  border-radius:5px;
-  display:inline-block;
+.small{
+  font-size:13px;
+  color:#bbb;
 }
 </style>
 </head>
@@ -148,8 +98,6 @@ h2{
     <button onclick="show('home')">Home</button>
     <button onclick="show('menu')">Menu</button>
     <button onclick="show('cart')">Carrinho</button>
-    <button onclick="show('login')">Login</button>
-    <button onclick="show('admin')">Admin</button>
     <button onclick="show('staff')">Equipe</button>
   </nav>
 </header>
@@ -158,11 +106,10 @@ h2{
 <div id="home" class="page active hero">
   <h1>El Rosado</h1>
   <p>
-    Nascido nas ruas vibrantes do México, o El Rosado começou como um pequeno carrinho de tacos iluminado por luzes vermelhas.
-    Com sabores autênticos e paixão pela culinária, conquistou clientes e cresceu.
-    Hoje, unimos tradição e tecnologia para oferecer uma experiência única.
+    Um restaurante que nasceu nas ruas do México e cresceu com paixão.
+    Cada prato conta uma história, cada sabor traz tradição.
   </p>
-  <button class="btn" onclick="show('menu')">🍽️ Pedir Agora</button>
+  <button class="btn" onclick="show('menu')">Ver Cardápio</button>
 </div>
 
 <!-- MENU -->
@@ -171,71 +118,65 @@ h2{
   <div class="grid">
 
     <div class="card">
-      <img src="https://source.unsplash.com/400x300/?taco">
+      <img src="https://images.unsplash.com/photo-1617196038435-3c1a5c3e1f2f">
       <h3>Taco</h3>
+      <p class="small">Carne, alface, queijo, molho</p>
       <p>R$ 18</p>
       <button class="btn" onclick="add('Taco',18)">Adicionar</button>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/400x300/?burrito">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
       <h3>Burrito</h3>
+      <p class="small">Arroz, carne, feijão, queijo</p>
       <p>R$ 25</p>
       <button class="btn" onclick="add('Burrito',25)">Adicionar</button>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/400x300/?nachos">
+      <img src="https://images.unsplash.com/photo-1544025162-d76694265947">
       <h3>Nachos</h3>
+      <p class="small">Tortilla, cheddar, carne</p>
       <p>R$ 20</p>
       <button class="btn" onclick="add('Nachos',20)">Adicionar</button>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/400x300/?quesadilla">
+      <img src="https://images.unsplash.com/photo-1585238342028-4d2a79b5b1b3">
       <h3>Quesadilla</h3>
+      <p class="small">Queijo, frango, tortilla</p>
       <p>R$ 22</p>
       <button class="btn" onclick="add('Quesadilla',22)">Adicionar</button>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/400x300/?guacamole">
+      <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85">
       <h3>Guacamole</h3>
+      <p class="small">Abacate, tomate, limão</p>
       <p>R$ 15</p>
       <button class="btn" onclick="add('Guacamole',15)">Adicionar</button>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/400x300/?chili">
-      <h3>Chili com Carne</h3>
-      <p>R$ 28</p>
-      <button class="btn" onclick="add('Chili',28)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?fajitas">
+      <img src="https://images.unsplash.com/photo-1601924638867-3ec2d5c0c0c6">
       <h3>Fajitas</h3>
+      <p class="small">Carne, pimentão, cebola</p>
       <p>R$ 30</p>
       <button class="btn" onclick="add('Fajitas',30)">Adicionar</button>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/400x300/?enchiladas">
-      <h3>Enchiladas</h3>
-      <p>R$ 27</p>
-      <button class="btn" onclick="add('Enchiladas',27)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://source.unsplash.com/400x300/?churros">
+      <img src="https://images.unsplash.com/photo-1625944238854-0c7c6e0f9c52">
       <h3>Churros</h3>
+      <p class="small">Massa doce, açúcar, canela</p>
       <p>R$ 12</p>
       <button class="btn" onclick="add('Churros',12)">Adicionar</button>
     </div>
 
     <div class="card">
-      <img src="https://source.unsplash.com/400x300/?soda">
+      <img src="https://images.unsplash.com/photo-1581006852262-e4307cf6283a">
       <h3>Refrigerante</h3>
+      <p class="small">Bebida gelada</p>
       <p>R$ 8</p>
       <button class="btn" onclick="add('Refri',8)">Adicionar</button>
     </div>
@@ -248,50 +189,25 @@ h2{
   <h2>Carrinho</h2>
   <div id="cartItems"></div>
   <h3>Total: R$ <span id="total">0</span></h3>
-  <button class="btn" onclick="checkout()">Finalizar Pedido</button>
-</div>
-
-<!-- LOGIN -->
-<div id="login" class="page">
-  <h2>Login</h2>
-  <input id="user" placeholder="Nome" style="padding:10px;width:100%;">
-  <button class="btn" onclick="login()">Entrar</button>
-</div>
-
-<!-- ADMIN -->
-<div id="admin" class="page">
-  <h2>Painel</h2>
-  <div id="orders"></div>
 </div>
 
 <!-- STAFF -->
 <div id="staff" class="page">
   <h2>Equipe</h2>
 
-  <div class="admin"><b>👨‍🍳 Chef</b><br>Cria os pratos</div>
-  <div class="admin"><b>🧑‍🍳 Cozinheiro</b><br>Prepara pedidos</div>
-  <div class="admin"><b>🧾 Caixa</b><br>Atendimento</div>
-  <div class="admin"><b>🚚 Entregador</b><br>Entrega pedidos</div>
-  <div class="admin"><b>🧠 Gerente</b><br>Administração geral</div>
-
+  <p>👨‍🍳 Chef — cria os pratos</p>
+  <p>🧑‍🍳 Cozinheiro — prepara pedidos</p>
+  <p>🚚 Entregador — leva pedidos</p>
 </div>
 
 <script>
 let cart = [];
 let total = 0;
-let user = "";
 
 function show(p){
   document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
   document.getElementById(p).classList.add('active');
-
   if(p==="cart") renderCart();
-  if(p==="admin") renderOrders();
-}
-
-function login(){
-  user = document.getElementById("user").value;
-  alert("Bem-vindo " + user);
 }
 
 function add(name,price){
@@ -305,72 +221,10 @@ function renderCart(){
   div.innerHTML = "";
 
   cart.forEach((c,i)=>{
-    div.innerHTML += `
-      <div class="item">
-        ${c.name} - R$ ${c.price}
-        <button onclick="remove(${i})">X</button>
-      </div>
-    `;
+    div.innerHTML += `${c.name} - R$ ${c.price}<br>`;
   });
 
   document.getElementById("total").innerText = total;
-}
-
-function remove(i){
-  total -= cart[i].price;
-  cart.splice(i,1);
-  renderCart();
-}
-
-function checkout(){
-  if(!user) return alert("Faça login");
-  if(cart.length===0) return alert("Carrinho vazio");
-
-  let orders = JSON.parse(localStorage.getItem("orders")||"[]");
-
-  orders.push({
-    user:user,
-    items:cart,
-    total:total,
-    status:"Recebido"
-  });
-
-  localStorage.setItem("orders",JSON.stringify(orders));
-
-  cart=[];
-  total=0;
-
-  alert("Pedido enviado!");
-  show("menu");
-}
-
-function renderOrders(){
-  let orders = JSON.parse(localStorage.getItem("orders")||"[]");
-  let div = document.getElementById("orders");
-
-  div.innerHTML="";
-
-  orders.forEach((o,i)=>{
-    div.innerHTML += `
-      <div class="admin">
-        <b>${o.user}</b><br>
-        ${o.items.map(x=>x.name).join(", ")}<br>
-        R$ ${o.total}<br>
-        <div class="status">${o.status}</div><br>
-
-        <button onclick="update(${i},'Preparando')">Preparar</button>
-        <button onclick="update(${i},'Saiu')">Saiu</button>
-        <button onclick="update(${i},'Entregue')">Entregue</button>
-      </div>
-    `;
-  });
-}
-
-function update(i,status){
-  let orders = JSON.parse(localStorage.getItem("orders"));
-  orders[i].status = status;
-  localStorage.setItem("orders",JSON.stringify(orders));
-  renderOrders();
 }
 </script>
 
