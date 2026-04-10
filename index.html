@@ -3,37 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>El Rosado Enterprise</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
-  font-family:Arial;
+  font-family:'Poppins', sans-serif;
   background:#0d0d0d;
   color:white;
+  overflow-x:hidden;
 }
 
 /* HEADER */
 header{
-  background:#ff2b2b;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
   padding:15px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  position:fixed;
+  width:100%;
+  z-index:100;
 }
 
 nav button{
   margin:0 5px;
-  padding:8px 10px;
+  padding:8px 12px;
   border:none;
-  border-radius:6px;
+  border-radius:20px;
   background:#1c1c1c;
   color:white;
   cursor:pointer;
+  transition:0.3s;
+}
+
+nav button:hover{
+  background:#ff2b2b;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(to bottom, #000, #111);
+  animation:fadeIn 1.5s ease;
+}
+
+.hero h1{
+  font-size:50px;
+  color:#ff2b2b;
+  letter-spacing:3px;
+  animation:slideDown 1s ease;
+}
+
+.hero p{
+  max-width:600px;
+  color:#ccc;
+  animation:fadeIn 2s ease;
+}
+
+.hero button{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:#ff2b2b;
+  color:white;
+  cursor:pointer;
+  font-size:16px;
+  transition:0.3s;
+}
+
+.hero button:hover{
+  transform:scale(1.1);
 }
 
 /* PAGES */
-.page{display:none;padding:20px;}
+.page{
+  display:none;
+  padding:100px 20px 20px;
+  animation:fadeIn 0.5s ease;
+}
+
 .active{display:block;}
 
 h2{
@@ -52,23 +111,24 @@ h2{
 .card{
   background:#1c1c1c;
   padding:15px;
-  border-radius:10px;
+  border-radius:15px;
   transition:0.3s;
 }
 
 .card:hover{
-  transform:scale(1.05);
+  transform:translateY(-5px) scale(1.03);
 }
 
 /* BUTTON */
 .btn{
   background:#ff2b2b;
   border:none;
-  padding:8px;
+  padding:10px;
   width:100%;
   color:white;
   margin-top:10px;
   cursor:pointer;
+  border-radius:10px;
 }
 
 /* CART */
@@ -93,14 +153,24 @@ h2{
   border-radius:5px;
   display:inline-block;
 }
+
+/* ANIMAÇÕES */
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+@keyframes slideDown{
+  from{transform:translateY(-30px); opacity:0;}
+  to{transform:translateY(0); opacity:1;}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h2>🌮 El Rosado</h2>
-
+  <h3>🌮 El Rosado</h3>
   <nav>
     <button onclick="show('home')">Home</button>
     <button onclick="show('menu')">Menu</button>
@@ -110,15 +180,18 @@ h2{
   </nav>
 </header>
 
-<!-- HOME -->
-<div id="home" class="page active">
-  <h2>Bem-vindo ao sistema profissional 🍽️</h2>
+<!-- HERO -->
+<div id="home" class="page active hero">
+  <h1>El Rosado</h1>
+  <p>
+    Uma experiência gastronômica que une tradição mexicana com tecnologia moderna.
+  </p>
+  <button onclick="show('menu')">🍽️ Pedir Agora</button>
 </div>
 
 <!-- MENU -->
 <div id="menu" class="page">
   <h2>Cardápio</h2>
-
   <div class="grid">
 
     <div class="card">
@@ -215,6 +288,11 @@ function remove(i){
 
 /* CHECKOUT */
 function checkout(){
+  if(!user){
+    alert("Faça login primeiro");
+    return;
+  }
+
   if(cart.length===0){
     alert("Carrinho vazio");
     return;
@@ -224,7 +302,7 @@ function checkout(){
 
   let order = {
     id: Date.now(),
-    user:user || "Anon",
+    user:user,
     items:cart,
     total:total,
     status:"🕐 Recebido"
@@ -237,6 +315,7 @@ function checkout(){
   total=0;
 
   alert("Pedido enviado!");
+  show("menu");
 }
 
 /* ADMIN */
