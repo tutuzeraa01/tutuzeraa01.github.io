@@ -42,11 +42,6 @@ nav button{
   background:#1c1c1c;
   color:white;
   cursor:pointer;
-  transition:0.3s;
-}
-
-nav button:hover{
-  background:#ff3b3b;
 }
 
 /* HERO */
@@ -58,106 +53,70 @@ nav button:hover{
   justify-content:center;
   align-items:center;
   text-align:center;
-  animation:fade 1s;
-}
-
-@keyframes fade{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1;}
 }
 
 .hero h1{
-  font-size:65px;
+  font-size:60px;
   font-family:'Playfair Display';
-  background:rgba(0,0,0,0.5);
-  padding:15px;
-  border-radius:12px;
 }
 
-.hero p{
-  max-width:650px;
-  background:rgba(0,0,0,0.5);
-  padding:20px;
-  border-radius:12px;
-}
-
-/* PAGES */
-.page{display:none;padding:110px 20px;animation:fade 0.6s;}
-.active{display:block;}
-
+/* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
 }
 
 /* CARD */
 .card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(8px);
+  background:#111;
   padding:15px;
-  border-radius:18px;
+  border-radius:15px;
   transition:0.3s;
 }
 
 .card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 25px #ff3b3b40;
+  transform:scale(1.05);
 }
 
 .card img{
   width:100%;
   height:160px;
   object-fit:cover;
-  border-radius:12px;
-  transition:0.3s;
+  border-radius:10px;
 }
 
-.card img:hover{
-  transform:scale(1.05);
-}
-
+/* BUTTON */
 .btn{
   background:#ff3b3b;
   border:none;
   padding:10px;
   width:100%;
   color:white;
-  margin-top:10px;
-  border-radius:12px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.btn:hover{
-  background:#ff1a1a;
-}
-
-/* NOTIFICAÇÃO */
-.toast{
-  position:fixed;
-  bottom:80px;
-  right:20px;
-  background:#111;
-  padding:12px 20px;
   border-radius:10px;
-  opacity:0;
-  transition:0.4s;
+  cursor:pointer;
 }
 
-.toast.show{opacity:1;}
+/* SEARCH */
+#search{
+  width:100%;
+  padding:10px;
+  margin:20px 0;
+  border-radius:10px;
+  border:none;
+}
 
-/* CARRINHO */
+/* CART */
 .cart{
   position:fixed;
-  right:-350px;
+  right:-320px;
   top:0;
-  width:320px;
+  width:300px;
   height:100%;
   background:#111;
   padding:20px;
-  transition:0.4s;
-  overflow-y:auto;
+  transition:0.3s;
+  overflow:auto;
 }
 
 .cart.open{right:0;}
@@ -166,7 +125,7 @@ nav button:hover{
   position:fixed;
   right:20px;
   bottom:20px;
-  background:#ff3b3b;
+  background:red;
   padding:15px;
   border-radius:50%;
   cursor:pointer;
@@ -183,22 +142,12 @@ nav button:hover{
   border-radius:50%;
 }
 
-/* FOOTER */
-footer{
-  background:#000;
-  text-align:center;
-  padding:20px;
-  margin-top:40px;
-}
-
-footer a{color:#25D366;}
-
-input{
+input,select{
   width:100%;
   padding:8px;
   margin:5px 0;
-  border:none;
   border-radius:8px;
+  border:none;
 }
 </style>
 </head>
@@ -210,135 +159,92 @@ input{
   <nav>
     <button onclick="show('home')">Home</button>
     <button onclick="show('menu')">Menu</button>
-    <button onclick="show('equipe')">Equipe</button>
   </nav>
 </header>
 
 <!-- HOME -->
-<div id="home" class="page active hero">
+<div id="home" class="page hero">
   <h1>El Rosado</h1>
-  <p>Uma experiência gastronômica premium que une tradição mexicana e inovação.</p>
+  <p>Experiência mexicana premium</p>
   <button class="btn" onclick="show('menu')">Ver Cardápio</button>
 </div>
 
 <!-- MENU -->
-<div id="menu" class="page">
-  <h2>🍽️ Pratos</h2>
+<div id="menu" class="page" style="display:none; padding:100px 20px;">
 
-  <div class="grid">
+<input id="search" placeholder="🔍 Buscar..." onkeyup="buscar()">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1601924582975-7b6dfffa2b8c">
-      <h3>Taco</h3>
-      <button class="btn" onclick="add('Taco',18)">Adicionar</button>
-    </div>
+<div class="grid">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b">
-      <h3>Burrito</h3>
-      <button class="btn" onclick="add('Burrito',25)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
-      <h3>Nachos</h3>
-      <button class="btn" onclick="add('Nachos',20)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1625944525903-c0c3d4d7fa7d">
-      <h3>Quesadilla</h3>
-      <button class="btn" onclick="add('Quesadilla',22)">Adicionar</button>
-    </div>
-
-  </div>
-
-  <h2>🥤 Bebidas</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1582450871972-ab5ca641643d">
-      <h3>Refrigerante</h3>
-      <button class="btn" onclick="add('Refrigerante',8)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1577805947697-89e18249d767">
-      <h3>Suco Natural</h3>
-      <button class="btn" onclick="add('Suco',10)">Adicionar</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e">
-      <h3>Milkshake</h3>
-      <button class="btn" onclick="add('Milkshake',15)">Adicionar</button>
-    </div>
-
-  </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1617196038435-0a0d9c9a7c8d?w=800">
+<h3>Taco</h3>
+<button class="btn" onclick="add('Taco',18)">Adicionar</button>
 </div>
 
-<!-- EQUIPE -->
-<div id="equipe" class="page">
-  <h2>👥 Nossa Equipe</h2>
-
-  <div class="grid">
-    <div class="card"><h3>Recepcionista</h3><p>Isadora</p></div>
-    <div class="card"><h3>Marketing</h3><p>Pietro</p></div>
-    <div class="card"><h3>Caixa</h3><p>Arthur</p></div>
-    <div class="card"><h3>Garçom</h3><p>Jorge</p></div>
-    <div class="card"><h3>Cozinha</h3><p>Iago Kny<br>Vithor</p></div>
-    <div class="card"><h3>Bar</h3><p>Murilo</p></div>
-    <div class="card"><h3>Estoque / Limpeza</h3><p>Manu</p></div>
-    <div class="card"><h3>Gerência</h3><p>Ana</p></div>
-  </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601924928376-7b1d3b9fbb5c?w=800">
+<h3>Quesadilla</h3>
+<button class="btn" onclick="add('Quesadilla',22)">Adicionar</button>
 </div>
 
-<!-- CARRINHO -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800">
+<h3>Burrito</h3>
+<button class="btn" onclick="add('Burrito',25)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1582169296194-e4d644c48063?w=800">
+<h3>Nachos</h3>
+<button class="btn" onclick="add('Nachos',20)">Adicionar</button>
+</div>
+
+</div>
+</div>
+
+<!-- CART -->
 <div class="cart" id="cart">
-  <h2>Pedido</h2>
-  <div id="cartItems"></div>
-  <h3>Total: R$ <span id="total">0</span></h3>
+<h2>Pedido</h2>
+<div id="cartItems"></div>
 
-  <input id="nome" placeholder="Nome">
-  <input id="endereco" placeholder="Endereço">
+<h3>Total: R$ <span id="total">0</span></h3>
 
-  <button class="btn" onclick="finalizar()">Finalizar</button>
+<input id="nome" placeholder="Nome">
+<input id="endereco" placeholder="Endereço">
+
+<select id="pagamento">
+<option>Pagamento</option>
+<option>Pix</option>
+<option>Cartão</option>
+<option>Dinheiro</option>
+</select>
+
+<button class="btn" onclick="finalizar()">Finalizar</button>
 </div>
 
 <div class="cart-btn" onclick="toggleCart()">
-  🛒 <span class="count" id="count">0</span>
+🛒 <span class="count" id="count">0</span>
 </div>
 
-<div class="toast" id="toast">Adicionado ao carrinho</div>
-
-<footer>
-  📲 <a href="https://wa.me/5599999999999">(55) 99999-9999</a><br>
-  © 2026 El Rosado - Todos os direitos reservados
-</footer>
-
 <script>
-let cart={};
+let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
+// navegar
 function show(p){
-  document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
-  document.getElementById(p).classList.add('active');
+  document.querySelectorAll('.page').forEach(e=>e.style.display="none");
+  document.getElementById(p).style.display="block";
 }
 
+// adicionar
 function add(name,price){
   if(!cart[name]) cart[name]={price,qty:1};
   else cart[name].qty++;
 
-  showToast();
   render();
 }
 
-function showToast(){
-  let t=document.getElementById("toast");
-  t.classList.add("show");
-  setTimeout(()=>t.classList.remove("show"),2000);
-}
-
+// render carrinho
 function render(){
   let div=document.getElementById("cartItems");
   div.innerHTML="";
@@ -350,20 +256,75 @@ function render(){
     total+=c.price*c.qty;
     count+=c.qty;
 
-    div.innerHTML+=`<div>${item} x${c.qty}</div>`;
+    div.innerHTML+=`
+      <div style="margin:10px 0">
+        ${item} x${c.qty}
+        <br>
+        <button onclick="mais('${item}')">+</button>
+        <button onclick="menos('${item}')">-</button>
+      </div>
+    `;
   }
 
   document.getElementById("total").innerText=total;
   document.getElementById("count").innerText=count;
+
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+// + -
+function mais(item){
+  cart[item].qty++;
+  render();
+}
+
+function menos(item){
+  cart[item].qty--;
+  if(cart[item].qty<=0) delete cart[item];
+  render();
+}
+
+// carrinho abrir
 function toggleCart(){
   document.getElementById("cart").classList.toggle("open");
 }
 
-function finalizar(){
-  window.open("https://wa.me/5599999999999");
+// buscar
+function buscar(){
+  let termo=document.getElementById("search").value.toLowerCase();
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display = c.innerText.toLowerCase().includes(termo) ? "block":"none";
+  });
 }
+
+// finalizar
+function finalizar(){
+  let nome = document.getElementById("nome").value;
+  let endereco = document.getElementById("endereco").value;
+  let pagamento = document.getElementById("pagamento").value;
+
+  if(!nome || !endereco){
+    alert("Preencha os dados!");
+    return;
+  }
+
+  let msg = `Pedido El Rosado\n\n`;
+
+  for(let item in cart){
+    let c=cart[item];
+    msg += `${item} x${c.qty} = R$ ${c.price*c.qty}\n`;
+  }
+
+  msg += `\nTotal: R$ ${document.getElementById("total").innerText}`;
+  msg += `\nPagamento: ${pagamento}`;
+  msg += `\nNome: ${nome}`;
+  msg += `\nEndereço: ${endereco}`;
+
+  let url = "https://wa.me/5599999999999?text=" + encodeURIComponent(msg);
+  window.open(url);
+}
+
+render();
 </script>
 
 </body>
