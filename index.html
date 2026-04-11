@@ -9,145 +9,99 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:'Poppins', sans-serif;
-  background:#0a0a0a;
-  color:white;
-}
+body{margin:0;font-family:Poppins;background:#0a0a0a;color:#fff}
 
 /* HEADER */
 header{
-  position:fixed;
-  width:100%;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(12px);
-  padding:12px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:10;
-}
-
-header h3{
-  font-family:'Playfair Display';
-  color:#ff3b3b;
+position:fixed;width:100%;background:#000000cc;
+display:flex;justify-content:space-between;
+padding:12px 20px;z-index:10
 }
 
 nav button{
-  margin:5px;
-  padding:8px 15px;
-  border:none;
-  border-radius:20px;
-  background:#1c1c1c;
-  color:white;
-  cursor:pointer;
+background:#222;color:#fff;border:none;
+padding:8px 12px;margin:5px;border-radius:20px;
+cursor:pointer
 }
 
 /* HERO */
 .hero{
-  height:100vh;
-  background:url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d') center/cover no-repeat;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+height:100vh;
+background:url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=1200') center/cover;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+text-align:center
 }
 
-.hero h1{
-  font-size:60px;
-  font-family:'Playfair Display';
-}
+/* PAGE */
+.page{display:none;padding:100px 20px}
+.active{display:block}
 
 /* GRID */
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px
 }
 
 /* CARD */
 .card{
-  background:#111;
-  padding:15px;
-  border-radius:15px;
-  transition:0.3s;
+background:#111;padding:15px;border-radius:15px;
+transition:.3s
 }
-
-.card:hover{
-  transform:scale(1.05);
-}
+.card:hover{transform:translateY(-8px)}
 
 .card img{
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  border-radius:10px;
+width:100%;height:160px;object-fit:cover;
+border-radius:10px
 }
 
 /* BUTTON */
 .btn{
-  background:#ff3b3b;
-  border:none;
-  padding:10px;
-  width:100%;
-  color:white;
-  border-radius:10px;
-  cursor:pointer;
+background:#ff3b3b;border:none;
+padding:10px;width:100%;
+color:#fff;border-radius:10px;cursor:pointer
 }
 
 /* SEARCH */
 #search{
-  width:100%;
-  padding:10px;
-  margin:20px 0;
-  border-radius:10px;
-  border:none;
+width:100%;padding:10px;margin:20px 0;
+border:none;border-radius:10px
 }
 
 /* CART */
 .cart{
-  position:fixed;
-  right:-320px;
-  top:0;
-  width:300px;
-  height:100%;
-  background:#111;
-  padding:20px;
-  transition:0.3s;
-  overflow:auto;
+position:fixed;right:-320px;top:0;
+width:300px;height:100%;
+background:#111;padding:20px;
+transition:.3s;overflow:auto
 }
-
-.cart.open{right:0;}
+.cart.open{right:0}
 
 .cart-btn{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:red;
-  padding:15px;
-  border-radius:50%;
-  cursor:pointer;
+position:fixed;bottom:20px;right:20px;
+background:red;padding:15px;border-radius:50%;
+cursor:pointer
 }
 
 .count{
-  position:absolute;
-  top:-5px;
-  right:-5px;
-  background:white;
-  color:black;
-  font-size:12px;
-  padding:3px 6px;
-  border-radius:50%;
+position:absolute;top:-5px;right:-5px;
+background:#fff;color:#000;padding:3px 6px;
+border-radius:50%;font-size:12px
 }
 
+/* TOAST */
+.toast{
+position:fixed;bottom:80px;right:20px;
+background:#111;padding:10px 20px;
+border-radius:10px;opacity:0;
+transition:.3s
+}
+.toast.show{opacity:1}
+
 input,select{
-  width:100%;
-  padding:8px;
-  margin:5px 0;
-  border-radius:8px;
-  border:none;
+width:100%;padding:8px;margin:5px 0;
+border:none;border-radius:8px
 }
 </style>
 </head>
@@ -155,25 +109,27 @@ input,select{
 <body>
 
 <header>
-  <h3>🌮 El Rosado</h3>
-  <nav>
-    <button onclick="show('home')">Home</button>
-    <button onclick="show('menu')">Menu</button>
-  </nav>
+<h3>🌮 El Rosado</h3>
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('menu')">Menu</button>
+<button onclick="show('equipe')">Equipe</button>
+</nav>
 </header>
 
 <!-- HOME -->
-<div id="home" class="page hero">
-  <h1>El Rosado</h1>
-  <p>Experiência mexicana premium</p>
-  <button class="btn" onclick="show('menu')">Ver Cardápio</button>
+<div id="home" class="page active hero">
+<h1>El Rosado</h1>
+<p>Experiência mexicana premium</p>
+<button class="btn" onclick="show('menu')">Ver Cardápio</button>
 </div>
 
 <!-- MENU -->
-<div id="menu" class="page" style="display:none; padding:100px 20px;">
+<div id="menu" class="page">
 
 <input id="search" placeholder="🔍 Buscar..." onkeyup="buscar()">
 
+<h2>🍽️ Pratos</h2>
 <div class="grid">
 
 <div class="card">
@@ -201,6 +157,39 @@ input,select{
 </div>
 
 </div>
+
+<h2>🥤 Bebidas</h2>
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1582450871972-ab5ca641643d?w=800">
+<h3>Refrigerante</h3>
+<button class="btn" onclick="add('Refrigerante',8)">Adicionar</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1577805947697-89e18249d767?w=800">
+<h3>Suco</h3>
+<button class="btn" onclick="add('Suco',10)">Adicionar</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- EQUIPE -->
+<div id="equipe" class="page">
+<h2>👥 Equipe</h2>
+<div class="grid">
+<div class="card">Isadora</div>
+<div class="card">Pietro</div>
+<div class="card">Arthur</div>
+<div class="card">Jorge</div>
+<div class="card">Iago / Vithor</div>
+<div class="card">Murilo</div>
+<div class="card">Manu</div>
+<div class="card">Ana</div>
+</div>
 </div>
 
 <!-- CART -->
@@ -227,101 +216,82 @@ input,select{
 🛒 <span class="count" id="count">0</span>
 </div>
 
+<div class="toast" id="toast">Adicionado!</div>
+
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
-// navegar
+// navegação
 function show(p){
-  document.querySelectorAll('.page').forEach(e=>e.style.display="none");
-  document.getElementById(p).style.display="block";
+document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
+document.getElementById(p).classList.add('active');
 }
 
 // adicionar
 function add(name,price){
-  if(!cart[name]) cart[name]={price,qty:1};
-  else cart[name].qty++;
+if(!cart[name]) cart[name]={price,qty:1};
+else cart[name].qty++;
 
-  render();
+showToast();
+render();
 }
 
-// render carrinho
+// render
 function render(){
-  let div=document.getElementById("cartItems");
-  div.innerHTML="";
-  let total=0;
-  let count=0;
+let div=document.getElementById("cartItems");
+div.innerHTML="";
+let total=0,count=0;
 
-  for(let item in cart){
-    let c=cart[item];
-    total+=c.price*c.qty;
-    count+=c.qty;
+for(let item in cart){
+let c=cart[item];
+total+=c.price*c.qty;
+count+=c.qty;
 
-    div.innerHTML+=`
-      <div style="margin:10px 0">
-        ${item} x${c.qty}
-        <br>
-        <button onclick="mais('${item}')">+</button>
-        <button onclick="menos('${item}')">-</button>
-      </div>
-    `;
-  }
-
-  document.getElementById("total").innerText=total;
-  document.getElementById("count").innerText=count;
-
-  localStorage.setItem("cart", JSON.stringify(cart));
+div.innerHTML+=`
+<div>
+${item} x${c.qty}
+<button onclick="mais('${item}')">+</button>
+<button onclick="menos('${item}')">-</button>
+</div>`;
 }
 
-// + -
-function mais(item){
-  cart[item].qty++;
-  render();
+document.getElementById("total").innerText=total;
+document.getElementById("count").innerText=count;
+
+localStorage.setItem("cart",JSON.stringify(cart));
 }
 
-function menos(item){
-  cart[item].qty--;
-  if(cart[item].qty<=0) delete cart[item];
-  render();
-}
+function mais(i){cart[i].qty++;render();}
+function menos(i){cart[i].qty--;if(cart[i].qty<=0) delete cart[i];render();}
 
-// carrinho abrir
 function toggleCart(){
-  document.getElementById("cart").classList.toggle("open");
+document.getElementById("cart").classList.toggle("open");
 }
 
-// buscar
 function buscar(){
-  let termo=document.getElementById("search").value.toLowerCase();
-  document.querySelectorAll(".card").forEach(c=>{
-    c.style.display = c.innerText.toLowerCase().includes(termo) ? "block":"none";
-  });
+let t=document.getElementById("search").value.toLowerCase();
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(t)?"block":"none";
+});
 }
 
-// finalizar
+function showToast(){
+let t=document.getElementById("toast");
+t.classList.add("show");
+setTimeout(()=>t.classList.remove("show"),2000);
+}
+
 function finalizar(){
-  let nome = document.getElementById("nome").value;
-  let endereco = document.getElementById("endereco").value;
-  let pagamento = document.getElementById("pagamento").value;
+let nome=document.getElementById("nome").value;
+let endereco=document.getElementById("endereco").value;
 
-  if(!nome || !endereco){
-    alert("Preencha os dados!");
-    return;
-  }
+let msg="Pedido El Rosado\n\n";
+for(let item in cart){
+let c=cart[item];
+msg+=`${item} x${c.qty}\n`;
+}
 
-  let msg = `Pedido El Rosado\n\n`;
-
-  for(let item in cart){
-    let c=cart[item];
-    msg += `${item} x${c.qty} = R$ ${c.price*c.qty}\n`;
-  }
-
-  msg += `\nTotal: R$ ${document.getElementById("total").innerText}`;
-  msg += `\nPagamento: ${pagamento}`;
-  msg += `\nNome: ${nome}`;
-  msg += `\nEndereço: ${endereco}`;
-
-  let url = "https://wa.me/5599999999999?text=" + encodeURIComponent(msg);
-  window.open(url);
+window.open("https://wa.me/5599999999999?text="+encodeURIComponent(msg));
 }
 
 render();
