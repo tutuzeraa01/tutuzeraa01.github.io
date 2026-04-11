@@ -6,13 +6,13 @@
 
 <title>El Rosado</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
   font-family:'Poppins', sans-serif;
-  background:#0d0d0d;
+  background:linear-gradient(120deg,#0d0d0d,#1a0000);
   color:white;
 }
 
@@ -20,11 +20,17 @@ body{
 header{
   position:fixed;
   width:100%;
-  background:#000;
+  background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(10px);
   padding:10px 20px;
   display:flex;
   justify-content:space-between;
   z-index:10;
+}
+
+header h3{
+  font-family:'Playfair Display';
+  color:#ff2b2b;
 }
 
 nav button{
@@ -37,26 +43,58 @@ nav button{
   cursor:pointer;
 }
 
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d') center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:60px;
+  font-family:'Playfair Display';
+  background:rgba(0,0,0,0.6);
+  padding:15px;
+  border-radius:10px;
+}
+
+.hero p{
+  max-width:600px;
+  background:rgba(0,0,0,0.6);
+  padding:20px;
+  border-radius:10px;
+}
+
 /* PAGES */
 .page{display:none;padding:100px 20px;}
 .active{display:block;}
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:20px;
 }
 
+/* CARD */
 .card{
   background:#1c1c1c;
   padding:15px;
-  border-radius:12px;
+  border-radius:15px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 15px #ff2b2b55;
 }
 
 .card img{
   width:100%;
-  height:140px;
+  height:150px;
   object-fit:cover;
   border-radius:10px;
 }
@@ -68,8 +106,8 @@ nav button{
   width:100%;
   color:white;
   margin-top:10px;
-  border-radius:10px;
   cursor:pointer;
+  border-radius:10px;
 }
 
 /* CARRINHO */
@@ -82,6 +120,7 @@ nav button{
   background:#111;
   padding:20px;
   transition:0.3s;
+  overflow-y:auto;
 }
 
 .cart.open{right:0;}
@@ -107,24 +146,40 @@ nav button{
   border-radius:5px;
 }
 
-/* FORM */
+.cart-btn{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#ff2b2b;
+  padding:15px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+/* STAFF */
+.staff-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
+
+.staff-card{
+  background:#1c1c1c;
+  padding:15px;
+  border-radius:12px;
+}
+
+.staff-card h3{
+  color:#ff2b2b;
+}
+
+/* INPUT */
 input{
   width:100%;
   padding:8px;
   margin:5px 0;
   border:none;
   border-radius:8px;
-}
-
-/* BOTÃO FLUTUANTE */
-.cart-btn{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#ff2b2b;
-  padding:15px;
-  border-radius:50%;
-  cursor:pointer;
 }
 </style>
 </head>
@@ -134,27 +189,50 @@ input{
 <header>
   <h3>🌮 El Rosado</h3>
   <nav>
+    <button onclick="show('home')">Home</button>
     <button onclick="show('menu')">Menu</button>
     <button onclick="show('staff')">Equipe</button>
   </nav>
 </header>
 
+<!-- HOME -->
+<div id="home" class="page active hero">
+  <h1>El Rosado</h1>
+  <p>
+    Onde tradição mexicana encontra paixão e sabor intenso.
+    Uma experiência única em cada prato.
+  </p>
+  <button class="btn" onclick="show('menu')">Ver Cardápio</button>
+</div>
+
 <!-- MENU -->
-<div id="menu" class="page active">
-  <h2>Cardápio</h2>
+<div id="menu" class="page">
+  <h2>🍽️ Cardápio</h2>
 
   <div class="grid">
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1617196038435-3c1a5c3e1f2f">
       <h3>Taco</h3>
-      <button class="btn" onclick="add('Taco',18)">Adicionar</button>
+      <button class="btn" onclick="add('Taco',18)">R$18</button>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
       <h3>Burrito</h3>
-      <button class="btn" onclick="add('Burrito',25)">Adicionar</button>
+      <button class="btn" onclick="add('Burrito',25)">R$25</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1544025162-d76694265947">
+      <h3>Nachos</h3>
+      <button class="btn" onclick="add('Nachos',20)">R$20</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85">
+      <h3>Guacamole</h3>
+      <button class="btn" onclick="add('Guacamole',15)">R$15</button>
     </div>
 
   </div>
@@ -162,25 +240,27 @@ input{
 
 <!-- STAFF -->
 <div id="staff" class="page">
-  <h2>Equipe</h2>
-  <p>Recepcionista: Isadora</p>
-  <p>Marketing: Pietro</p>
-  <p>Caixa: Arthur</p>
-  <p>Garçom: Jorge</p>
-  <p>Cozinha: Iago Kny, Vithor</p>
-  <p>Bar: Murilo</p>
-  <p>Estoque/Limpeza: Manu</p>
-  <p>Gerência: Ana</p>
+  <h2>👥 Nossa Equipe</h2>
+
+  <div class="staff-grid">
+    <div class="staff-card"><h3>Recepcionista</h3><p>Isadora</p></div>
+    <div class="staff-card"><h3>Marketing</h3><p>Pietro</p></div>
+    <div class="staff-card"><h3>Caixa</h3><p>Arthur</p></div>
+    <div class="staff-card"><h3>Garçom</h3><p>Jorge</p></div>
+    <div class="staff-card"><h3>Cozinha</h3><p>Iago Kny, Vithor</p></div>
+    <div class="staff-card"><h3>Bar</h3><p>Murilo</p></div>
+    <div class="staff-card"><h3>Estoque/Limpeza</h3><p>Manu</p></div>
+    <div class="staff-card"><h3>Gerência</h3><p>Ana</p></div>
+  </div>
 </div>
 
 <!-- CARRINHO -->
 <div class="cart" id="cart">
-  <h2>Pedido</h2>
+  <h2>🛒 Pedido</h2>
   <div id="cartItems"></div>
 
   <h3>Total: R$ <span id="total">0</span></h3>
 
-  <h4>Seus dados</h4>
   <input id="nome" placeholder="Seu nome">
   <input id="endereco" placeholder="Endereço">
 
