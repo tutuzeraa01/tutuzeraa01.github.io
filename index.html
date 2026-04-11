@@ -6,13 +6,13 @@
 
 <title>El Rosado</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
   font-family:'Poppins', sans-serif;
-  background:linear-gradient(120deg,#0d0d0d,#1a0000);
+  background:#0a0a0a;
   color:white;
 }
 
@@ -20,17 +20,18 @@ body{
 header{
   position:fixed;
   width:100%;
-  background:rgba(0,0,0,0.8);
-  backdrop-filter:blur(10px);
-  padding:10px 20px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(12px);
+  padding:12px 20px;
   display:flex;
   justify-content:space-between;
+  align-items:center;
   z-index:10;
 }
 
 header h3{
   font-family:'Playfair Display';
-  color:#ff2b2b;
+  color:#ff3b3b;
 }
 
 nav button{
@@ -38,9 +39,14 @@ nav button{
   padding:8px 15px;
   border:none;
   border-radius:20px;
-  background:#222;
+  background:#1c1c1c;
   color:white;
   cursor:pointer;
+  transition:0.3s;
+}
+
+nav button:hover{
+  background:#ff3b3b;
 }
 
 /* HERO */
@@ -52,57 +58,95 @@ nav button{
   justify-content:center;
   align-items:center;
   text-align:center;
+  animation:fade 1s;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1;}
 }
 
 .hero h1{
-  font-size:60px;
+  font-size:65px;
   font-family:'Playfair Display';
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.5);
   padding:15px;
-  border-radius:10px;
+  border-radius:12px;
 }
 
 .hero p{
   max-width:650px;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.5);
   padding:20px;
-  border-radius:10px;
-  line-height:1.6;
+  border-radius:12px;
 }
 
 /* PAGES */
-.page{display:none;padding:100px 20px;}
+.page{display:none;padding:110px 20px;animation:fade 0.6s;}
 .active{display:block;}
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
 }
 
 /* CARD */
 .card{
-  background:#1c1c1c;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(8px);
   padding:15px;
-  border-radius:15px;
+  border-radius:18px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 25px #ff3b3b40;
 }
 
 .card img{
   width:100%;
-  height:150px;
+  height:160px;
   object-fit:cover;
-  border-radius:10px;
+  border-radius:12px;
+  transition:0.3s;
+}
+
+.card img:hover{
+  transform:scale(1.05);
 }
 
 .btn{
-  background:#ff2b2b;
+  background:#ff3b3b;
   border:none;
   padding:10px;
   width:100%;
   color:white;
   margin-top:10px;
-  border-radius:10px;
+  border-radius:12px;
   cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#ff1a1a;
+}
+
+/* NOTIFICAÇÃO */
+.toast{
+  position:fixed;
+  bottom:80px;
+  right:20px;
+  background:#111;
+  padding:12px 20px;
+  border-radius:10px;
+  opacity:0;
+  transition:0.4s;
+}
+
+.toast.show{
+  opacity:1;
 }
 
 /* CARRINHO */
@@ -114,58 +158,31 @@ nav button{
   height:100%;
   background:#111;
   padding:20px;
-  transition:0.3s;
+  transition:0.4s;
   overflow-y:auto;
 }
 
 .cart.open{right:0;}
 
-.item{
-  background:#222;
-  padding:10px;
-  margin:10px 0;
-  border-radius:10px;
-}
-
-.qty{
-  display:flex;
-  justify-content:space-between;
-  margin-top:5px;
-}
-
-.qty button{
-  background:#ff2b2b;
-  border:none;
-  color:white;
-  padding:5px 10px;
-  border-radius:5px;
-}
-
 .cart-btn{
   position:fixed;
   right:20px;
   bottom:20px;
-  background:#ff2b2b;
+  background:#ff3b3b;
   padding:15px;
   border-radius:50%;
   cursor:pointer;
 }
 
-/* STAFF */
-.staff-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
-}
-
-.staff-card{
-  background:#1c1c1c;
-  padding:15px;
-  border-radius:12px;
-}
-
-.staff-card h3{
-  color:#ff2b2b;
+.count{
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  background:white;
+  color:black;
+  font-size:12px;
+  padding:3px 6px;
+  border-radius:50%;
 }
 
 /* FOOTER */
@@ -173,13 +190,11 @@ footer{
   background:#000;
   text-align:center;
   padding:20px;
-  margin-top:50px;
+  margin-top:40px;
 }
 
 footer a{
   color:#25D366;
-  text-decoration:none;
-  font-weight:bold;
 }
 
 /* INPUT */
@@ -200,23 +215,13 @@ input{
   <nav>
     <button onclick="show('home')">Home</button>
     <button onclick="show('menu')">Menu</button>
-    <button onclick="show('staff')">Equipe</button>
   </nav>
 </header>
 
-<!-- HOME -->
+<!-- HERO -->
 <div id="home" class="page active hero">
   <h1>El Rosado</h1>
-  <p>
-    Tudo começou em uma pequena vila no México, onde o fogo e a tradição
-    se encontravam em receitas passadas de geração em geração.
-    
-    Um jovem cozinheiro decidiu levar esses sabores além das fronteiras,
-    criando pratos intensos, marcantes e cheios de identidade.
-
-    Assim nasceu o El Rosado — não apenas um restaurante, mas uma experiência.
-    Aqui, cada mordida conta uma história.
-  </p>
+  <p>Uma experiência gastronômica premium que une tradição mexicana e inovação.</p>
   <button class="btn" onclick="show('menu')">Ver Cardápio</button>
 </div>
 
@@ -229,77 +234,39 @@ input{
     <div class="card">
       <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b">
       <h3>Taco</h3>
-      <button class="btn" onclick="add('Taco',18)">R$18</button>
+      <button class="btn" onclick="add('Taco',18)">Adicionar</button>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
       <h3>Burrito</h3>
-      <button class="btn" onclick="add('Burrito',25)">R$25</button>
+      <button class="btn" onclick="add('Burrito',25)">Adicionar</button>
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1544025162-d76694265947">
-      <h3>Nachos</h3>
-      <button class="btn" onclick="add('Nachos',20)">R$20</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85">
-      <h3>Guacamole</h3>
-      <button class="btn" onclick="add('Guacamole',15)">R$15</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1604908812058-6e8e5c8b4a1d">
-      <h3>Quesadilla</h3>
-      <button class="btn" onclick="add('Quesadilla',22)">R$22</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1613145997970-db84a7975fbb">
-      <h3>Churros</h3>
-      <button class="btn" onclick="add('Churros',14)">R$14</button>
-    </div>
-
-  </div>
-</div>
-
-<!-- STAFF -->
-<div id="staff" class="page">
-  <h2>👥 Nossa Equipe</h2>
-
-  <div class="staff-grid">
-    <div class="staff-card"><h3>Recepcionista</h3><p>Isadora</p></div>
-    <div class="staff-card"><h3>Marketing</h3><p>Pietro</p></div>
-    <div class="staff-card"><h3>Caixa</h3><p>Arthur</p></div>
-    <div class="staff-card"><h3>Garçom</h3><p>Jorge</p></div>
-    <div class="staff-card"><h3>Cozinha</h3><p>Iago Kny, Vithor</p></div>
-    <div class="staff-card"><h3>Bar</h3><p>Murilo</p></div>
-    <div class="staff-card"><h3>Estoque/Limpeza</h3><p>Manu</p></div>
-    <div class="staff-card"><h3>Gerência</h3><p>Ana</p></div>
   </div>
 </div>
 
 <!-- CARRINHO -->
 <div class="cart" id="cart">
-  <h2>🛒 Pedido</h2>
+  <h2>Pedido</h2>
   <div id="cartItems"></div>
-
   <h3>Total: R$ <span id="total">0</span></h3>
 
-  <input id="nome" placeholder="Seu nome">
+  <input id="nome" placeholder="Nome">
   <input id="endereco" placeholder="Endereço">
 
-  <button class="btn" onclick="finalizar()">Finalizar Pedido</button>
+  <button class="btn" onclick="finalizar()">Finalizar</button>
 </div>
 
-<div class="cart-btn" onclick="toggleCart()">🛒</div>
+<div class="cart-btn" onclick="toggleCart()">
+  🛒 <span class="count" id="count">0</span>
+</div>
 
-<!-- FOOTER -->
+<div class="toast" id="toast">Adicionado!</div>
+
 <footer>
-  📲 WhatsApp: <a href="https://wa.me/5599999999999" target="_blank">(55) 99999-9999</a><br><br>
-  © 2026 El Rosado - Todos os direitos reservados
+  📲 <a href="https://wa.me/5599999999999">(55) 99999-9999</a><br>
+  © 2026 El Rosado
 </footer>
 
 <script>
@@ -311,42 +278,35 @@ function show(p){
 }
 
 function add(name,price){
-  if(!cart[name]){
-    cart[name]={price:price,qty:1};
-  }else{
-    cart[name].qty++;
-  }
+  if(!cart[name]) cart[name]={price,qty:1};
+  else cart[name].qty++;
+
+  showToast();
   render();
 }
 
-function change(name,delta){
-  cart[name].qty+=delta;
-  if(cart[name].qty<=0) delete cart[name];
-  render();
+function showToast(){
+  let t=document.getElementById("toast");
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2000);
 }
 
 function render(){
   let div=document.getElementById("cartItems");
   div.innerHTML="";
   let total=0;
+  let count=0;
 
   for(let item in cart){
     let c=cart[item];
     total+=c.price*c.qty;
+    count+=c.qty;
 
-    div.innerHTML+=`
-      <div class="item">
-        ${item} - R$${c.price}
-        <div class="qty">
-          <button onclick="change('${item}',-1)">-</button>
-          ${c.qty}
-          <button onclick="change('${item}',1)">+</button>
-        </div>
-      </div>
-    `;
+    div.innerHTML+=`<div>${item} x${c.qty}</div>`;
   }
 
   document.getElementById("total").innerText=total;
+  document.getElementById("count").innerText=count;
 }
 
 function toggleCart(){
@@ -354,26 +314,7 @@ function toggleCart(){
 }
 
 function finalizar(){
-  let nome=document.getElementById("nome").value;
-  let end=document.getElementById("endereco").value;
-
-  if(!nome || !end){
-    alert("Preencha seus dados!");
-    return;
-  }
-
-  let msg=`Pedido%0ACliente: ${nome}%0AEndereço: ${end}%0A`;
-  let total=0;
-
-  for(let item in cart){
-    let c=cart[item];
-    total+=c.price*c.qty;
-    msg+=`${item} x${c.qty} - R$${c.price*c.qty}%0A`;
-  }
-
-  msg+=`Total: R$${total}`;
-
-  window.open("https://wa.me/5599999999999?text="+msg);
+  window.open("https://wa.me/5599999999999");
 }
 </script>
 
