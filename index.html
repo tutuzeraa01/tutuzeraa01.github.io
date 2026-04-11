@@ -63,10 +63,11 @@ nav button{
 }
 
 .hero p{
-  max-width:600px;
+  max-width:650px;
   background:rgba(0,0,0,0.6);
   padding:20px;
   border-radius:10px;
+  line-height:1.6;
 }
 
 /* PAGES */
@@ -84,12 +85,6 @@ nav button{
   background:#1c1c1c;
   padding:15px;
   border-radius:15px;
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 15px #ff2b2b55;
 }
 
 .card img{
@@ -106,8 +101,8 @@ nav button{
   width:100%;
   color:white;
   margin-top:10px;
-  cursor:pointer;
   border-radius:10px;
+  cursor:pointer;
 }
 
 /* CARRINHO */
@@ -173,6 +168,20 @@ nav button{
   color:#ff2b2b;
 }
 
+/* FOOTER */
+footer{
+  background:#000;
+  text-align:center;
+  padding:20px;
+  margin-top:50px;
+}
+
+footer a{
+  color:#25D366;
+  text-decoration:none;
+  font-weight:bold;
+}
+
 /* INPUT */
 input{
   width:100%;
@@ -199,8 +208,14 @@ input{
 <div id="home" class="page active hero">
   <h1>El Rosado</h1>
   <p>
-    Onde tradição mexicana encontra paixão e sabor intenso.
-    Uma experiência única em cada prato.
+    Tudo começou em uma pequena vila no México, onde o fogo e a tradição
+    se encontravam em receitas passadas de geração em geração.
+    
+    Um jovem cozinheiro decidiu levar esses sabores além das fronteiras,
+    criando pratos intensos, marcantes e cheios de identidade.
+
+    Assim nasceu o El Rosado — não apenas um restaurante, mas uma experiência.
+    Aqui, cada mordida conta uma história.
   </p>
   <button class="btn" onclick="show('menu')">Ver Cardápio</button>
 </div>
@@ -212,7 +227,7 @@ input{
   <div class="grid">
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1617196038435-3c1a5c3e1f2f">
+      <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b">
       <h3>Taco</h3>
       <button class="btn" onclick="add('Taco',18)">R$18</button>
     </div>
@@ -233,6 +248,18 @@ input{
       <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85">
       <h3>Guacamole</h3>
       <button class="btn" onclick="add('Guacamole',15)">R$15</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1604908812058-6e8e5c8b4a1d">
+      <h3>Quesadilla</h3>
+      <button class="btn" onclick="add('Quesadilla',22)">R$22</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1613145997970-db84a7975fbb">
+      <h3>Churros</h3>
+      <button class="btn" onclick="add('Churros',14)">R$14</button>
     </div>
 
   </div>
@@ -268,6 +295,12 @@ input{
 </div>
 
 <div class="cart-btn" onclick="toggleCart()">🛒</div>
+
+<!-- FOOTER -->
+<footer>
+  📲 WhatsApp: <a href="https://wa.me/5599999999999" target="_blank">(55) 99999-9999</a><br><br>
+  © 2026 El Rosado - Todos os direitos reservados
+</footer>
 
 <script>
 let cart={};
