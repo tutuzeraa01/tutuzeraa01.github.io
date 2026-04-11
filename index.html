@@ -21,7 +21,7 @@ header{
   position:fixed;
   width:100%;
   background:#000;
-  padding:10px;
+  padding:10px 20px;
   display:flex;
   justify-content:space-between;
   z-index:10;
@@ -29,7 +29,7 @@ header{
 
 nav button{
   margin:5px;
-  padding:8px;
+  padding:8px 15px;
   border:none;
   border-radius:20px;
   background:#222;
@@ -37,46 +37,21 @@ nav button{
   cursor:pointer;
 }
 
-nav button:hover{
-  background:#ff2b2b;
-}
-
-/* HERO COM IMAGEM */
-.hero{
-  height:100vh;
-  background:url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d') center/cover no-repeat;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.hero h1{
-  font-size:50px;
-  background:rgba(0,0,0,0.6);
-  padding:10px;
-}
-
-.hero p{
-  max-width:600px;
-  background:rgba(0,0,0,0.6);
-  padding:15px;
-}
-
+/* PAGES */
 .page{display:none;padding:100px 20px;}
 .active{display:block;}
 
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
+  gap:20px;
 }
 
 .card{
   background:#1c1c1c;
-  padding:10px;
-  border-radius:10px;
+  padding:15px;
+  border-radius:12px;
 }
 
 .card img{
@@ -93,15 +68,63 @@ nav button:hover{
   width:100%;
   color:white;
   margin-top:10px;
+  border-radius:10px;
   cursor:pointer;
+}
+
+/* CARRINHO */
+.cart{
+  position:fixed;
+  right:-350px;
+  top:0;
+  width:320px;
+  height:100%;
+  background:#111;
+  padding:20px;
+  transition:0.3s;
+}
+
+.cart.open{right:0;}
+
+.item{
+  background:#222;
+  padding:10px;
+  margin:10px 0;
   border-radius:10px;
 }
 
-.item{
-  background:#1c1c1c;
-  padding:10px;
-  margin:5px;
+.qty{
+  display:flex;
+  justify-content:space-between;
+  margin-top:5px;
+}
+
+.qty button{
+  background:#ff2b2b;
+  border:none;
+  color:white;
+  padding:5px 10px;
+  border-radius:5px;
+}
+
+/* FORM */
+input{
+  width:100%;
+  padding:8px;
+  margin:5px 0;
+  border:none;
   border-radius:8px;
+}
+
+/* BOTÃO FLUTUANTE */
+.cart-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#ff2b2b;
+  padding:15px;
+  border-radius:50%;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -111,139 +134,133 @@ nav button:hover{
 <header>
   <h3>🌮 El Rosado</h3>
   <nav>
-    <button onclick="show('home')">Home</button>
     <button onclick="show('menu')">Menu</button>
-    <button onclick="show('cart')">Carrinho</button>
     <button onclick="show('staff')">Equipe</button>
   </nav>
 </header>
 
-<!-- HOME -->
-<div id="home" class="page active hero">
-  <h1>El Rosado</h1>
-  <p>
-    Dizem que tudo começou com um porco assado lentamente em uma pequena vila mexicana,
-    preparado por um cozinheiro apaixonado que acreditava que comida era mais do que sabor — era emoção.
-
-    O aroma se espalhou pelas ruas, atraindo pessoas de todos os cantos.
-    Assim nasceu o El Rosado: um lugar onde tradição, fogo e paixão se encontram.
-
-    Hoje trazemos essa mesma essência até você.
-  </p>
-  <button class="btn" onclick="show('menu')">🔥 Ver Cardápio</button>
-</div>
-
 <!-- MENU -->
-<div id="menu" class="page">
+<div id="menu" class="page active">
   <h2>Cardápio</h2>
+
   <div class="grid">
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1617196038435-3c1a5c3e1f2f">
       <h3>Taco</h3>
-      <p>Carne, alface, queijo e molho especial</p>
-      <button class="btn" onclick="add('Taco',18)">R$18</button>
+      <button class="btn" onclick="add('Taco',18)">Adicionar</button>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
       <h3>Burrito</h3>
-      <p>Arroz, feijão, carne e queijo derretido</p>
-      <button class="btn" onclick="add('Burrito',25)">R$25</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1544025162-d76694265947">
-      <h3>Nachos</h3>
-      <p>Tortilla crocante com cheddar e carne</p>
-      <button class="btn" onclick="add('Nachos',20)">R$20</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85">
-      <h3>Guacamole</h3>
-      <p>Abacate fresco com limão e temperos</p>
-      <button class="btn" onclick="add('Guacamole',15)">R$15</button>
+      <button class="btn" onclick="add('Burrito',25)">Adicionar</button>
     </div>
 
   </div>
-</div>
-
-<!-- CART -->
-<div id="cart" class="page">
-  <h2>Carrinho</h2>
-  <div id="cartItems"></div>
-  <h3>Total: R$ <span id="total">0</span></h3>
-  <button class="btn" onclick="checkout()">Confirmar Pedido</button>
 </div>
 
 <!-- STAFF -->
 <div id="staff" class="page">
   <h2>Equipe</h2>
-
-  <div class="item">
-    👨‍🍳 <b>Chef</b><br>
-    Responsável por criar receitas únicas e garantir qualidade máxima.
-  </div>
-
-  <div class="item">
-    🧑‍🍳 <b>Cozinheiro</b><br>
-    Prepara cada prato com precisão e rapidez.
-  </div>
-
-  <div class="item">
-    🧾 <b>Atendente</b><br>
-    Cuida do cliente e organiza pedidos.
-  </div>
-
-  <div class="item">
-    🚚 <b>Entregador</b><br>
-    Leva sua comida até você com agilidade.
-  </div>
-
+  <p>Recepcionista: Isadora</p>
+  <p>Marketing: Pietro</p>
+  <p>Caixa: Arthur</p>
+  <p>Garçom: Jorge</p>
+  <p>Cozinha: Iago Kny, Vithor</p>
+  <p>Bar: Murilo</p>
+  <p>Estoque/Limpeza: Manu</p>
+  <p>Gerência: Ana</p>
 </div>
 
+<!-- CARRINHO -->
+<div class="cart" id="cart">
+  <h2>Pedido</h2>
+  <div id="cartItems"></div>
+
+  <h3>Total: R$ <span id="total">0</span></h3>
+
+  <h4>Seus dados</h4>
+  <input id="nome" placeholder="Seu nome">
+  <input id="endereco" placeholder="Endereço">
+
+  <button class="btn" onclick="finalizar()">Finalizar Pedido</button>
+</div>
+
+<div class="cart-btn" onclick="toggleCart()">🛒</div>
+
 <script>
-let cart = [];
-let total = 0;
+let cart={};
 
 function show(p){
   document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
   document.getElementById(p).classList.add('active');
-  if(p==="cart") renderCart();
 }
 
 function add(name,price){
-  cart.push({name,price});
-  total+=price;
-  alert(name+" adicionado!");
+  if(!cart[name]){
+    cart[name]={price:price,qty:1};
+  }else{
+    cart[name].qty++;
+  }
+  render();
 }
 
-function renderCart(){
+function change(name,delta){
+  cart[name].qty+=delta;
+  if(cart[name].qty<=0) delete cart[name];
+  render();
+}
+
+function render(){
   let div=document.getElementById("cartItems");
   div.innerHTML="";
+  let total=0;
 
-  cart.forEach((c,i)=>{
+  for(let item in cart){
+    let c=cart[item];
+    total+=c.price*c.qty;
+
     div.innerHTML+=`
       <div class="item">
-        ${c.name} - R$ ${c.price}
+        ${item} - R$${c.price}
+        <div class="qty">
+          <button onclick="change('${item}',-1)">-</button>
+          ${c.qty}
+          <button onclick="change('${item}',1)">+</button>
+        </div>
       </div>
     `;
-  });
+  }
 
   document.getElementById("total").innerText=total;
 }
 
-function checkout(){
-  if(cart.length===0){
-    alert("Carrinho vazio!");
+function toggleCart(){
+  document.getElementById("cart").classList.toggle("open");
+}
+
+function finalizar(){
+  let nome=document.getElementById("nome").value;
+  let end=document.getElementById("endereco").value;
+
+  if(!nome || !end){
+    alert("Preencha seus dados!");
     return;
   }
 
-  alert("✅ Pedido confirmado! Obrigado!");
-  cart=[];
-  total=0;
-  show("home");
+  let msg=`Pedido%0ACliente: ${nome}%0AEndereço: ${end}%0A`;
+  let total=0;
+
+  for(let item in cart){
+    let c=cart[item];
+    total+=c.price*c.qty;
+    msg+=`${item} x${c.qty} - R$${c.price*c.qty}%0A`;
+  }
+
+  msg+=`Total: R$${total}`;
+
+  window.open("https://wa.me/5599999999999?text="+msg);
 }
 </script>
 
