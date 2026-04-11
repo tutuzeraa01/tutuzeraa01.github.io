@@ -145,9 +145,7 @@ nav button:hover{
   transition:0.4s;
 }
 
-.toast.show{
-  opacity:1;
-}
+.toast.show{opacity:1;}
 
 /* CARRINHO */
 .cart{
@@ -193,11 +191,8 @@ footer{
   margin-top:40px;
 }
 
-footer a{
-  color:#25D366;
-}
+footer a{color:#25D366;}
 
-/* INPUT */
 input{
   width:100%;
   padding:8px;
@@ -215,10 +210,11 @@ input{
   <nav>
     <button onclick="show('home')">Home</button>
     <button onclick="show('menu')">Menu</button>
+    <button onclick="show('equipe')">Equipe</button>
   </nav>
 </header>
 
-<!-- HERO -->
+<!-- HOME -->
 <div id="home" class="page active hero">
   <h1>El Rosado</h1>
   <p>Uma experiência gastronômica premium que une tradição mexicana e inovação.</p>
@@ -227,22 +223,74 @@ input{
 
 <!-- MENU -->
 <div id="menu" class="page">
-  <h2>🍽️ Cardápio</h2>
+  <h2>🍽️ Pratos</h2>
 
   <div class="grid">
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b">
+      <img src="https://images.unsplash.com/photo-1601924582975-7b6dfffa2b8c">
       <h3>Taco</h3>
       <button class="btn" onclick="add('Taco',18)">Adicionar</button>
     </div>
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+      <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b">
       <h3>Burrito</h3>
       <button class="btn" onclick="add('Burrito',25)">Adicionar</button>
     </div>
 
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+      <h3>Nachos</h3>
+      <button class="btn" onclick="add('Nachos',20)">Adicionar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1625944525903-c0c3d4d7fa7d">
+      <h3>Quesadilla</h3>
+      <button class="btn" onclick="add('Quesadilla',22)">Adicionar</button>
+    </div>
+
+  </div>
+
+  <h2>🥤 Bebidas</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1582450871972-ab5ca641643d">
+      <h3>Refrigerante</h3>
+      <button class="btn" onclick="add('Refrigerante',8)">Adicionar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1577805947697-89e18249d767">
+      <h3>Suco Natural</h3>
+      <button class="btn" onclick="add('Suco',10)">Adicionar</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e">
+      <h3>Milkshake</h3>
+      <button class="btn" onclick="add('Milkshake',15)">Adicionar</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- EQUIPE -->
+<div id="equipe" class="page">
+  <h2>👥 Nossa Equipe</h2>
+
+  <div class="grid">
+    <div class="card"><h3>Recepcionista</h3><p>Isadora</p></div>
+    <div class="card"><h3>Marketing</h3><p>Pietro</p></div>
+    <div class="card"><h3>Caixa</h3><p>Arthur</p></div>
+    <div class="card"><h3>Garçom</h3><p>Jorge</p></div>
+    <div class="card"><h3>Cozinha</h3><p>Iago Kny<br>Vithor</p></div>
+    <div class="card"><h3>Bar</h3><p>Murilo</p></div>
+    <div class="card"><h3>Estoque / Limpeza</h3><p>Manu</p></div>
+    <div class="card"><h3>Gerência</h3><p>Ana</p></div>
   </div>
 </div>
 
@@ -262,11 +310,11 @@ input{
   🛒 <span class="count" id="count">0</span>
 </div>
 
-<div class="toast" id="toast">Adicionado!</div>
+<div class="toast" id="toast">Adicionado ao carrinho</div>
 
 <footer>
   📲 <a href="https://wa.me/5599999999999">(55) 99999-9999</a><br>
-  © 2026 El Rosado
+  © 2026 El Rosado - Todos os direitos reservados
 </footer>
 
 <script>
